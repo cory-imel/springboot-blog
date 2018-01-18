@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>This Roll</title>
+</head>
+<body>
+<h1>Your Guess was <span th:text="${guess}"></span></h1>
+<div th:each="roll,iterationStatus : ${rolls}">
+    <pre>Roll number <span th:text="${iterationStatus.count}"></span> rolled:  <span th:text="${roll.intValue()}"></span></pre>
+    <div th:if="${guess} == ${roll.intValue()}">
+        <pre>   Good guess!</pre>
+    </div>
+    <div th:if="${guess} != ${roll.intValue()}">
+        <pre>   Better luck next time :(</pre>
+    </div>
+    <br/>
+</div>
+</body>
+</html>
