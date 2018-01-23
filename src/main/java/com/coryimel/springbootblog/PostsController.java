@@ -63,7 +63,7 @@ public class PostsController {
     }
 
     @PostMapping("/posts/edit")
-    public String EditPost(@ModelAttribute Post post,) {
+    public String EditPost(@ModelAttribute Post post) {
         postsRepository.save(post);
         return "redirect:/posts";
     }
