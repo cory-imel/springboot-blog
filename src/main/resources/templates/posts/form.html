@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('Post Form')">
+</head>
+<body>
+<div th:if="${post} == null">
+<form action="/posts/create" method="post" th:object="${post}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input type="text" th:field="*{body}" />
+    <br />
+    <input type="submit" />
+</form>
+</div>
+<div th:if="${post} != null">
+    <form action="/posts/edit" method="post" th:object="${post}">
+        <input type="hidden" th:field="*{id}" th:attr="value = ${post.id}"/>
+        Title:
+        <input th:field="*{title}" th:attr="value = ${post.title}" />
+        <br />
+        Body:
+        <input type="text" th:field="*{body}" th:attr="value = ${post.title}"/>
+        <br />
+        <input type="submit" />
+    </form>
+    <form action="/posts/delete" method="post" th:object="${post}">
+        <input type="submit" value="Delete" />
+        <input type="hidden" th:field="*{id}" th:attr="value = ${post.id}"/>
+        <input type="hidden" th:field="*{title}" th:attr="value = ${post.title}" />
+        <input type="hidden" th:field="*{body}" th:attr="value = ${post.title}"/>
+    </form>
+</div>
+</body>
+</html>

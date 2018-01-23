@@ -5,37 +5,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
 public class MathController {
 
-    @GetMapping("/add/{num1}/and/{num2}")
+    @GetMapping("/add/{x}/and/{y}")
     @ResponseBody
-    public String add(@PathVariable String num1, @PathVariable String num2) {
-        return Integer.toString(Integer.parseInt(num1) + Integer.parseInt(num2));
+    public String add(@PathVariable int x, @PathVariable int y) {
+        return "" + (x + y);
     }
 
-    @GetMapping("/subtract/{num1}/from/{num2}")
+    @GetMapping("/subtract/{x}/from/{y}")
     @ResponseBody
-    public String subtract(@PathVariable String num1, @PathVariable String num2) {
-        return Integer.toString(Integer.parseInt(num2) - Integer.parseInt(num1));
+    public String subtract(@PathVariable int x, @PathVariable int y) {
+        return "" + (y - x);
     }
 
-    @GetMapping("/multiply/{num1}/and/{num2}")
+    @GetMapping("/multiply/{x}/by/{y}")
     @ResponseBody
-    public String multiply(@PathVariable String num1, @PathVariable String num2) {
-        return Integer.toString(Integer.parseInt(num1) * Integer.parseInt(num2));
+    public String multiply(@PathVariable int x, @PathVariable int y) {
+        return "" + (x * y);
     }
 
-    @GetMapping("/divide/{num1}/by/{num2}")
+    @GetMapping("/divide/{x}/by/{y}")
     @ResponseBody
-    public String divide(@PathVariable String num1, @PathVariable String num2) {
-        if(!(Integer.parseInt(num2) == 0)) {
-            return Integer.toString(Integer.parseInt(num1) / Integer.parseInt(num2));
-        }else{
-            return "Error div by 0!";
-        }
+    public String divide(@PathVariable int x, @PathVariable int y) {
+        return "" + (x / y);
     }
+
 }
-
-
